@@ -1,8 +1,4 @@
 import React, { useState } from 'react'
-import HospitalRegistrationPage from './pages/AdminPage'
-import adminApi from './apis/adminApi'
-import authApi from './apis/authApis'
-import RegisterPage from "./pages/RegisterPage"
 import { AuthProvider } from './context/authContext'
 import { Outlet } from 'react-router-dom'
 

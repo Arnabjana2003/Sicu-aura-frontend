@@ -1,5 +1,4 @@
 import axios from "axios"
-import { search } from "../../../backend/controllers/admin.controller";
 
 const backendUrl = String(import.meta.env.VITE_BACKEND_BASE_ENDPOINT)
 
