@@ -114,16 +114,24 @@ const initialValue = {
   password: "",
   registrationCertificateLink: "",
 };
+
+
+
 function Signup({ onSubmit }) {
+  const [loading,setLoading] = useState(false)
   const [data, setData] = useState(initialValue);
   const [error, setError] = useState(false);
+
   const handleInput = (key, value) => {
     setData({ ...data, [key]: value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(false);
+    setLoading(true)
     if (data.password !== data.createPassword) {
+      setLoading(false)
       return setError("Incorrect confirm password");
     }
     authApi
@@ -132,7 +140,8 @@ function Signup({ onSubmit }) {
       .catch((err) => {
         console.log(err);
         setError(err.response.data.message);
-      });
+      })
+      .finally(()=>setLoading(false))
   };
 
   return (
@@ -153,8 +162,9 @@ function Signup({ onSubmit }) {
         <div className="flex flex-col items-center justify-center w-full mt-5">
           {error && <p className="mb-8 text-red-500">{error}</p>}
           <button
-            className="px-8 py-2 rounded-lg bg-slate-800 text-white text-lg font-semibold"
+            className="px-8 py-2 rounded-lg bg-slate-800 text-white text-lg font-semibold disabled:bg-slate-400"
             type="submit"
+            disabled={loading}
           >
             Sign Up
           </button>

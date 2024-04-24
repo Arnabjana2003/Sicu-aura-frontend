@@ -43,6 +43,7 @@ const initialValue = {hospitalName:"",email:"",password:"",accessCode:""}
 
 
 function Login() {
+  const [loading,setLoading] = useState(false)
   const [error,setError] = useState(false)
   const navigate = useNavigate()
   const {login} = useAuthContext()
@@ -53,17 +54,22 @@ function Login() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(false)
+    setError(true)
     authApi.login(data)
     .then(()=>setOpenCam(true))
     .catch((err)=>setError(err.response.data.message))
+    .finally(()=>setLoading(false))
   };
   const onCapture = (imgSrc)=>{
     const loginData = {...data,imgSrc}
     login(loginData)
     navigate("/admin")
   }
+
+
  if(openCam) return <div><ImgCapture onCapture={onCapture}/></div>
+
+
  return (
   <div className='flex flex-col items-center border rounded-3xl shadow-2xl w-fit p-10 mx-auto mt-16'>
     <div className='text-center'>
@@ -85,7 +91,7 @@ function Login() {
       ))}
       <div className="flex flex-col items-center justify-center w-full mt-5">
           {error && <p className="mb-8 text-red-500">{error}</p>}
-          <button className="px-8 py-2 rounded-lg bg-slate-800 text-white text-lg font-semibold" type="submit">
+          <button className="px-8 py-2 rounded-lg bg-slate-800 text-white text-lg font-semibold disabled:bg-slate-400" type="submit">
             Sign Up
           </button>
         </div>
