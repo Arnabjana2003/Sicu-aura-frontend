@@ -3,7 +3,6 @@ import Signup from "../components/Signup";
 import Login from "../components/Login";
 import SicuAuraBanner from "../components/SicuAuraBanner";
 import hospitalImg from "../assets/3ad994db5b5e421121cc1ef38e21523e.png";
-
 import PopupBox from "../components/PopupBox";
 
 function RegisterPage() {
