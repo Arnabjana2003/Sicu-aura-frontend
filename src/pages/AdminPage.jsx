@@ -18,7 +18,7 @@ function AdminPage() {
   useEffect(() => {
     if (!authData.status) return navigate("/");
     adminApi.getAllHospitals().then((res) => {
-      const newData = res.data.map((data) => {
+      const newData = res.data.map((data,index) => {
 
 
         //get the data exclude the _id field as it is not required to show on the table
