@@ -7,7 +7,8 @@ function Table({data}) {
             <table className="table-auto w-full">
               <thead className="bg-cyan-300 rounded-xl">
                 <tr>
-                  {data.length && Object.keys(data[0]).map((key) => (
+                  {data.length && Object.keys(data[0]).map((key) => ( //iterating over the objects keys for getting table headings
+
                     <th key={key} className="px-4 py-2 text-left font-semibold text-gray-800 capitalize  border-gray-200">
                       {key}
                     </th>
@@ -16,7 +17,7 @@ function Table({data}) {
               </thead>
     
               <tbody>
-                {data.map((item, index) => (
+                {data.map((item, index) => ( //for actual data fill in the table
                   <tr key={index} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
                     {Object.values(item).map((value, index) => (
                       <td key={index} className="px-4 py-2 text-sm text-gray-700">

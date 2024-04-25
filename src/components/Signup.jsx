@@ -38,6 +38,8 @@ const InputField = ({
     />
   );
 };
+
+//array of all input fields on which the InptField will be mapped
 const inputArr = [
   {
     name: "hospitalName",
@@ -118,22 +120,29 @@ const initialValue = {
 
 
 function Signup({ onSubmit }) {
+
   const [loading,setLoading] = useState(false)
   const [data, setData] = useState(initialValue);
   const [error, setError] = useState(false);
 
+  //for input text change and update the data object with latest value
   const handleInput = (key, value) => {
     setData({ ...data, [key]: value });
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(false);
     setLoading(true)
+
+    //check if the new password and confirm password same or ot
     if (data.password !== data.createPassword) {
       setLoading(false)
       return setError("Incorrect confirm password");
     }
+
+    //call backend api to register new hospital with the data
     authApi
       .register(data)
       .then(() => onSubmit())

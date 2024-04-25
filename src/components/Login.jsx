@@ -93,7 +93,7 @@ function Login() {
       <div className="flex flex-col items-center justify-center w-full mt-5">
           {error && <p className="mb-8 text-red-500">{error}</p>}
           <button className="px-8 py-2 rounded-lg bg-slate-800 text-white text-lg font-semibold disabled:bg-slate-400" type="submit" disabled={loading}>
-            Sign Up
+            Login
           </button>
         </div>
     </form>
