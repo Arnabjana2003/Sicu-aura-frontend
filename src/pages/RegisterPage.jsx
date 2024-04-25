@@ -19,7 +19,7 @@ function RegisterPage() {
 
   return (
     <div className="flex w-full h-full">
-      //on the signup button is clicked, show the successfull popup
+      {/* on the signup button is clicked, show the successfull popup */}
       {showPopup ? <PopupBox /> : null}
       <div>
         <SicuAuraBanner />

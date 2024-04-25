@@ -6,12 +6,14 @@ function ImgCapture({onCapture}) {
     const webcamRef = useRef(null);
     const [isCaptured,setIsCaptured] = useState(false)
   
+    //to capture the picture
     const capturePhoto = () => {
       const imageSrc = webcamRef.current.getScreenshot();
       // Use the imageSrc for further processing or storage
       setIsCaptured(imageSrc);
     };
 
+    //on confirm the taken picture to proceed
     const onContinue = ()=>{
       onCapture(isCaptured);
     }

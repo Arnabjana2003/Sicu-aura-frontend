@@ -49,9 +49,13 @@ function Login() {
   const {login} = useAuthContext()
   const [data, setData] = useState(initialValue);
   const [openCam,setOpenCam] = useState(false)
+
+  // for handleing input field datas
   const handleInput = (key, value) => {
     setData({ ...data, [key]: value });
   };
+
+  //handle login and for successful login show open the image capture component
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(true)
@@ -61,6 +65,8 @@ function Login() {
     .catch((err)=>setError(err.response.data.message))
     .finally(()=>setLoading(false))
   };
+
+  //on confirm the image cature
   const onCapture = (imgSrc)=>{
     const loginData = {...data,imgSrc}
     login(loginData)
